@@ -21,7 +21,7 @@ public class ProductService {
 
 
     public Product save(Product product) {
-
+        product.setStock(100l);
         return this.productRepository.save(product);
     }
 
@@ -45,7 +45,7 @@ public class ProductService {
     Product update(Product newProduct, Long id) {
         this.findById(id);
         newProduct.setId(id);
-        return this.save(newProduct);
+        return this.productRepository.save(newProduct);
     }
 
     public void deleteById(Long productId) {

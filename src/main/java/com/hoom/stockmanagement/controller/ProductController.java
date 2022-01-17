@@ -44,7 +44,6 @@ public class ProductController {
 
     @PostMapping()
     public ResponseEntity<Product> save(@RequestBody Product product) {
-        product.setStock(100l);
         return ResponseEntity.status(HttpStatus.CREATED).body(this.productService.save(product));
     }
 
