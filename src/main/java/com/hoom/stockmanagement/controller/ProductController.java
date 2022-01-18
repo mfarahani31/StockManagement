@@ -23,23 +23,10 @@ public class ProductController {
     public ResponseEntity<List<Product>> getAll() {
         return ResponseEntity.ok(this.productService.findAll());
     }
+
     @GetMapping("/{productId}")
     public ResponseEntity<Product> getOneById(@PathVariable Long productId) {
         return ResponseEntity.ok(this.productService.findById(productId));
-    }
-    @GetMapping("/getStock/{productId}")
-    public ResponseEntity<Long> getStock(@PathVariable Long productId) {
-        return ResponseEntity.ok(this.productService.getStockOfProduct(productId));
-    }
-
-    @PatchMapping("/refill/{productId}")
-    public void refillProduct(@PathVariable Long productId,@RequestBody Long count){
-        this.productService.refill(productId,count);
-    }
-
-    @PostMapping("/{productId}")
-    public void buyProduct(@PathVariable Long productId,@RequestBody Long count){
-        this.productService.buy(productId,count);
     }
 
     @PostMapping()
@@ -47,10 +34,20 @@ public class ProductController {
         return ResponseEntity.status(HttpStatus.CREATED).body(this.productService.save(product));
     }
 
-    @DeleteMapping("/{productId}")
-    public ResponseEntity deleteById(@PathVariable Long productId) {
-        productService.deleteById(productId);
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    @GetMapping("/getStock/{productId}")
+    public ResponseEntity<Long> getStock(@PathVariable Long productId) {
+        return ResponseEntity.ok(this.productService.getStockOfProduct(productId));
     }
+
+    @PatchMapping("/refill/{productId}")
+    public ResponseEntity<Product> refillProduct(@PathVariable Long productId, @RequestBody Long count) {
+        return ResponseEntity.status(HttpStatus.OK).body(this.productService.refill(productId, count));
+    }
+
+    @PostMapping("/{productId}")
+    public void buyProduct(@PathVariable Long productId, @RequestBody Long count) {
+        this.productService.buy(productId, count);
+    }
+
 
 }

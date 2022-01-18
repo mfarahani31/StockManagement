@@ -21,8 +21,26 @@ public class ProductService {
 
 
     public Product save(Product product) {
-        product.setStock(100l);
+        product.setStock(100L);
         return this.productRepository.save(product);
+    }
+
+    public Product findById(Long id) {
+        return this.productRepository.findById(id).orElseThrow(() -> new HttpServerErrorException(HttpStatus.NOT_FOUND));
+    }
+
+    public List<Product> findAll() {
+        return this.productRepository.findAll();
+    }
+
+    public Long getStockOfProduct(Long productId) {
+        return this.findById(productId).getStock();
+    }
+
+    public Product refill(Long productId, Long count) {
+        Product product = this.findById(productId);
+        product.setStock(product.getStock() + count);
+        return this.update(product, productId);
     }
 
     public void buy(Long productId, Long count) {
@@ -33,32 +51,10 @@ public class ProductService {
         this.update(product, productId);
     }
 
-
-    public Product findById(Long id) {
-        return this.productRepository.findById(id).orElseThrow(() -> new HttpServerErrorException(HttpStatus.NOT_FOUND));
-    }
-
-    public List<Product> findAll() {
-        return this.productRepository.findAll();
-    }
-
     Product update(Product newProduct, Long id) {
         this.findById(id);
         newProduct.setId(id);
         return this.productRepository.save(newProduct);
     }
 
-    public void deleteById(Long productId) {
-        this.productRepository.deleteById(productId);
-    }
-
-    public Long getStockOfProduct(Long productId) {
-        return this.productRepository.findById(productId).get().getStock();
-    }
-
-    public void refill(Long productId, Long count) {
-        Product product = this.findById(productId);
-        product.setStock(product.getStock() + count);
-        this.update(product, productId);
-    }
 }
