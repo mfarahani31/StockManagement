@@ -1,7 +1,6 @@
 # StockManagement
 This is a test repo for java interview
-
-Stock Manager Application
+===============================================
 
 Develop a REST Application which manages the product stock in an E-Shop
 
