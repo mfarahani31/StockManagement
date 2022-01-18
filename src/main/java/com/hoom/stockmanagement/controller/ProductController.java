@@ -1,6 +1,7 @@
 package com.hoom.stockmanagement.controller;
 
 import com.hoom.stockmanagement.model.Product;
+import com.hoom.stockmanagement.model.ProductMapper;
 import com.hoom.stockmanagement.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,8 +31,8 @@ public class ProductController {
     }
 
     @PostMapping()
-    public ResponseEntity<Product> save(@RequestBody Product product) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(this.productService.save(product));
+    public ResponseEntity<Product> save(@RequestBody CreateProductRequestModel createProductRequestModel) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(this.productService.save(ProductMapper.INSTANCE.toProduct(createProductRequestModel)));
     }
 
     @GetMapping("/getStock/{productId}")
