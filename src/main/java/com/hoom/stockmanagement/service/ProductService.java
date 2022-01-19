@@ -13,6 +13,8 @@ import java.util.List;
 public class ProductService {
 
     private final ProductRepository productRepository;
+//    @Autowired
+//    private ApplicationEventPublisher applicationEventPublisher;
 
     @Autowired
     public ProductService(ProductRepository productRepository) {
@@ -21,7 +23,6 @@ public class ProductService {
 
 
     public Product save(Product product) {
-        product.setStock(100L);
         return this.productRepository.save(product);
     }
 

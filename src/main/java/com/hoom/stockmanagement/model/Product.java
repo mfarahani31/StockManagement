@@ -28,5 +28,5 @@ public class Product extends AuditModel implements Serializable {
     private String description;
 
     @Column(name = "STOCK")
-    private Long stock;
+    private Long stock = 100L;
 }
