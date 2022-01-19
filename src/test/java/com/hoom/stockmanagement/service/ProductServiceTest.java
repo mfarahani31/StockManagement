@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.client.HttpServerErrorException;
 
 import java.util.ArrayList;
@@ -69,6 +70,12 @@ class ProductServiceTest {
 
         assertThrows(HttpServerErrorException.class, () -> productService.buy(1L, 1000L));
 
+    }
+
+    @Test
+    void findById_throws_exception() {
+        when(productRepository.findById(1L)).thenThrow(new HttpServerErrorException(HttpStatus.NOT_FOUND));
+        assertThrows(HttpServerErrorException.class, () -> productService.findById(1L));
     }
 
     @Test
