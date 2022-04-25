@@ -5,7 +5,6 @@ REST Application which manages the product stock in an E-Shop
 
 Conditions:
 
-* The whole Development must not take more than 4 hours
 * Fill free to use any Framework and Database
 * The Application must be based on multitier architecture
 * All services must be covered by unit tests
