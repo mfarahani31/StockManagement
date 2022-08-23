@@ -1,18 +1,7 @@
 # StockManagement
 ===============================================
 
-REST Application which manages the product stock in an E-Shop
-
-Conditions:
-
-* Fill free to use any Framework and Database
-* The Application must be based on multitier architecture
-* All services must be covered by unit tests
-* All functions must be documented
-* Use Lambda expressions where possible
-* Push the completed project to github, gitlab or bitbucket
-
-Requirements:
+A simple REST Application which manages the product stock in an E-Shop
 
 * The Product has a predefined initial stock of 100
 * Ask the whole product information
