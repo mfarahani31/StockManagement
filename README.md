@@ -56,7 +56,7 @@ POST   | /api/v1/products/{productId}| buy a product|
 
 See full document of APIs on swagger-ui ;
 
-on [http://localhost:8080/swagger-ui/](http://localhost:8080/swagger-ui/)
+on [http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html)
 
 
 

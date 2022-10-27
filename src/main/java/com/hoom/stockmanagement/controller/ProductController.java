@@ -35,12 +35,12 @@ public class ProductController {
         return ResponseEntity.status(HttpStatus.CREATED).body(this.productService.save(ProductMapper.INSTANCE.toProduct(createProductRequestModel)));
     }
 
-    @GetMapping("/getStock/{productId}")
+    @GetMapping("/{productId}/getStock")
     public ResponseEntity<Long> getStock(@PathVariable Long productId) {
         return ResponseEntity.ok(this.productService.getStockOfProduct(productId));
     }
 
-    @PatchMapping("/refill/{productId}")
+    @PatchMapping("/{productId}/refill")
     public ResponseEntity<Product> refillProduct(@PathVariable Long productId, @RequestBody Long count) {
         return ResponseEntity.status(HttpStatus.OK).body(this.productService.refill(productId, count));
     }
